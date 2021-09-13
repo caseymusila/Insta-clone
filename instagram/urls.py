@@ -1,6 +1,6 @@
-from django.conf.urls import path
+from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("home", views.index, name = "home"),
+    path("insta/", views.index, name = "home"),
 ]

@@ -17,3 +17,4 @@ class Post(models.Model):
 
     def delete(self):
         self.delete()
+        
