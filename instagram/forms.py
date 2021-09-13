@@ -15,3 +15,5 @@ class PostForm(forms.Form):
         fields = ['image']
 
 
+class CommentForm(forms.Form):
+    body = forms.CharField(widget = forms.TextInput(attrs = {"class": "form-control", "placeholder": "Leave a Comment"}))
