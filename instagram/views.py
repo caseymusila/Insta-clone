@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from .models import Post
-from django.contrib.auth.decorators import login_required , redirect
+from django.contrib.auth.decorators import login_required 
 from django.views.decorators.csrf import csrf_protect
 from .forms import PostForm, CommentForm
 from django.contrib import messages
@@ -18,7 +18,7 @@ def index(request):
 
 @login_required
 @csrf_protect
-def add_post(request):
+def add_post(request)
     form = PostForm(request.POST, request.FILES)
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)

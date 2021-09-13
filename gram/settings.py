@@ -135,6 +135,9 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+LOGIN_REDIRECT_URL = '/'
+
+
 cloudinary.config( 
   cloud_name = "dqyehfhhu", 
   api_key = "558786757449655", 
