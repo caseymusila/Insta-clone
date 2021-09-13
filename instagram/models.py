@@ -21,3 +21,4 @@ class Post(models.Model):
 class NewPost(models.Model):
     image = CloudinaryField('image')
 
+
