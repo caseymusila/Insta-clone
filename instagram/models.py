@@ -17,4 +17,7 @@ class Post(models.Model):
 
     def delete(self):
         self.delete()
-        
+
+class NewPost(models.Model):
+    image = CloudinaryField('image')
+
