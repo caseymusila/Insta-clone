@@ -76,4 +76,16 @@ def like(request, pk):
 
 
 
+@login_required
+def delete_post(request, id):
+    obj = get_object_or_404(Post, id = id)
+    if request.method == "POST" and request.user.is_authenticated and request.user.username == User:
+        obj.delete()
 
+        messages.success(request, f'Post deleted successfully.')
+        return redirect("home")
+
+    context = {}
+
+
+    return render(request, "grampost/delete_post.html", context)
