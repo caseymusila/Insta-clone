@@ -65,6 +65,13 @@ def post_detail(request, pk):
 
     return render(request, "grampost/post_details.html", context)
 
+@login_required
+def like(request, pk):
+    post = Post.objects.get(pk=pk)
+    post.likes+=1
+    post.save()
+
+    return redirect("home")
 
 
 
