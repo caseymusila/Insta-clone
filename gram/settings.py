@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'instagram',
     'cloudinary',
     'bootstrap3',
+    'crispy_forms'
+
     
 ]
 
@@ -143,3 +145,5 @@ cloudinary.config(
   api_key = "558786757449655", 
   api_secret = "dOc3tozgAhkCxegAz6Xip5SmN5U" 
 )
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
