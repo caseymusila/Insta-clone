@@ -9,3 +9,9 @@ class PostForm(forms.Form):
     image_caption = forms.CharField(widget=forms.Textarea())
 
 
+
+    class Meta:
+        model = NewPost
+        fields = ['image']
+
+
