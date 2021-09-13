@@ -22,3 +22,11 @@ class NewPost(models.Model):
     image = CloudinaryField('image')
 
 
+class Comment(models.Model):
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add = True)
+    post = models.ForeignKey('Post', on_delete = models.CASCADE)
+    author = models.ForeignKey(User, on_delete = models.CASCADE)
+
+    def __str__(self):
+        return self.post

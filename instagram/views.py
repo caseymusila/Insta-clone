@@ -1,5 +1,5 @@
 from django.shortcuts import render , redirect
-from .models import Post
+from .models import Post , Comment
 from django.contrib.auth.decorators import login_required 
 from django.views.decorators.csrf import csrf_protect
 from .forms import PostForm, CommentForm
@@ -18,7 +18,7 @@ def index(request):
 
 @login_required
 @csrf_protect
-def add_post(request)
+def add_post(request):
     form = PostForm(request.POST, request.FILES)
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
@@ -42,6 +42,28 @@ def add_post(request)
 
     return render(request, "grampost/new_post.html", {"form": form})
 
+
+@login_required
+@csrf_protect
+def post_detail(request, pk):
+    post = Post.objects.get(pk=pk)
+    user = request.user
+    form = CommentForm()
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = Comment(author = user, body = form.cleaned_data["body"], post = post)
+
+            comment.save()
+
+    comments = Comment.objects.filter(post = post).order_by("-created")
+    context = {
+        "post": post,
+        "comments": comments,
+        "form": form,
+    }
+
+    return render(request, "grampost/post_details.html", context)
 
 
 
