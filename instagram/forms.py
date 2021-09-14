@@ -1,4 +1,4 @@
-from instagram.models import NewPost
+from instagram.models import NewPost, Profile
 from django import forms
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
@@ -34,3 +34,8 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email']
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['image', 'bio']
