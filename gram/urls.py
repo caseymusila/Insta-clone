@@ -17,8 +17,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path,include
+from django.contrib.auth import views as av
+from instagram import views as uv
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('instagram.urls')),
+    path("register/", uv.register, name = "register"),
+    path("profile/", uv.profile, name = "profile"),
 ]

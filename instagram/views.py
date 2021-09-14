@@ -2,7 +2,7 @@ from django.shortcuts import render , redirect ,get_object_or_404
 from .models import Post , Comment , Profile
 from django.contrib.auth.decorators import login_required 
 from django.views.decorators.csrf import csrf_protect
-from .forms import PostForm, CommentForm , RegisterForm, UserUpdateForm, ProfileUpdateForm
+from .forms import PostForm, CommentForm , RegisterForm , UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 
