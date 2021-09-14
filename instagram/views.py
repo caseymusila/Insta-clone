@@ -6,6 +6,7 @@ from .forms import PostForm, CommentForm , RegisterForm , UserUpdateForm, Profil
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 
