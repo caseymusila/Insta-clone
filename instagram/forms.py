@@ -1,6 +1,9 @@
 from instagram.models import NewPost
 from django import forms
 from cloudinary.models import CloudinaryField
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+
 
 
 class PostForm(forms.Form):
