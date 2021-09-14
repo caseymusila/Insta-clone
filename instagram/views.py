@@ -5,6 +5,8 @@ from django.views.decorators.csrf import csrf_protect
 from .forms import PostForm, CommentForm , RegisterForm , UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+
 
 
 
