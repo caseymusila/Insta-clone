@@ -30,3 +30,11 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.post
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = CloudinaryField('image')
+    bio = models.TextField(default='Bio', max_length=100)
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
