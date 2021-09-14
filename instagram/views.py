@@ -1,5 +1,5 @@
 from django.shortcuts import render , redirect ,get_object_or_404
-from .models import Post , Comment
+from .models import Post , Comment 
 from django.contrib.auth.decorators import login_required 
 from django.views.decorators.csrf import csrf_protect
 from .forms import PostForm, CommentForm
@@ -90,3 +90,23 @@ def delete_post(request, id):
 
 
     return render(request, "grampost/delete_post.html", context)
+
+
+@csrf_protect
+def register(request):
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+            for user in User.objects.all():
+                Profile.objects.get_or_create(user = user)
+
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account has been Created for {username}! You can now log in.')
+            return redirect('login')
+
+    else:
+        form = RegisterForm()
+
+    return render(request, "registration/register.html", {"form":form})

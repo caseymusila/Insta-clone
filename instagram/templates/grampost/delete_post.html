@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Post Delete
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container d-flex justify-content-center">
+        <div class="row">
+        <div class="bg-white text-center rounded shadow-sm py-5 px-4 mt-5">
+            <h5 class="mb-0">Are you sure you want to delete this item?</h5>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="submit" value="Yes" class="btn btn-primary" />
+                <a href="{% url 'home' %}">
+                    <span class="small text-uppercase text-muted">Cancel</span>
+                </a>
+            </form>
+
+        </div>
+        </div>
+    </div>
+{% endblock %}

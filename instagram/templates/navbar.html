@@ -1,0 +1,26 @@
+{% load static %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% if user.is_authenticated %}
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm sticky-top">
+    <div class="container"><a class="navbar-brand" href="{% url 'home' %}">
+        <strong class="h6 mb-0 font-weight-bold text-uppercase">DEV GRAM</strong></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'add_post' %}">
+                        <i class="fa fa-compass fa-lg"></i>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'profile' %}">
+                        <i class="fa fa-user-o fa-lg"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% else %}
+{% endif %}
