@@ -10,32 +10,31 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-import django_heroku
-import dj_database_url
-from decouple import config,Csv
 from pathlib import Path
 
-
-MODE=config("MODE", default="dev")
+import cloudinary
+import cloudinary.api
+import cloudinary.uploader
+import dj_database_url
+import django_heroku
+from decouple import Csv, config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'django-insecure-d7dqthgfz4)#xx24u9ks0dii0s=+#=3q2bzswc!^6mmb7e@(ku'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = True
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = '/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Application definition
@@ -54,12 +53,6 @@ INSTALLED_APPS = [
 
     
 ]
-
-cloudinary.config( 
-  cloud_name = "dqyehfhhu", 
-  api_key = "558786757449655", 
-  api_secret = "dOc3tozgAhkCxegAz6Xip5SmN5U" 
-)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -92,20 +85,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'gram.wsgi.application'
 
+cloudinary.config( 
+  cloud_name = "dqyehfhhu", 
+  api_key = "558786757449655", 
+  api_secret = "dOc3tozgAhkCxegAz6Xip5SmN5U" 
+)
+
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'insta',
-#         'HOST': 'localhost',
-#         'USER':'casey',
-#         'PASSWORD':'musila'
-#     }
-# }
 
+MODE=config("MODE", default="dev")
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
+# development
 if config('MODE')=="dev":
    DATABASES = {
        'default': {
@@ -128,6 +122,9 @@ else:
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -169,20 +166,27 @@ STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+    os.path.join(BASE_DIR, 'static'),
 
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 
-
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# configuring the location for media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_REDIRECT_URL = '/'
-
-
+# Configure Django App for Heroku.
 django_heroku.settings(locals())
+
+
+
+
+
+
+
+
+
