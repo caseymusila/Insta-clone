@@ -16,7 +16,7 @@ A clone of the website for the popular photo app like Instagram.
 - visual Studio Code
 - Github for storage
 - Heroku for hosting
-- HTML5, CSS3, Bootstrap4
+- HTML5, CSS3, Bootstrap3
 
 #### Installation
 
